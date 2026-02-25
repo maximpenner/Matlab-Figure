@@ -6,6 +6,10 @@ function [] = arrange(config)
 
     fig_handles = figure_misc.get_all_fig_handles(config.is_sorted_by_number);
 
+    if isempty(fig_handles)
+        return;
+    end
+
     % determine grid size
     n_fig = numel(fig_handles);
     n_row = ceil(n_fig / config.n_col);
