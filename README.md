@@ -4,8 +4,18 @@
 
 Miscellaneous tools to support graphical visualization in Matlab
 
-## Testing
+## Using
+
+### Arrange all open Figures in Grid
 
 ```matlab
-figure_arrange.example();
+figure_arrange.grid();
+```
+
+## Testing
+
+Open some figures and arrange them in a grid:
+
+```matlab
+figure_arrange.example.grid();
 ```

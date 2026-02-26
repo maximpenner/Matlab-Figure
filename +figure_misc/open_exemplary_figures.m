@@ -1,9 +1,9 @@
-function [] = open_random_figures(number_max, n_figures)
+function [] = open_exemplary_figures(figure_number_max, n_figures)
 
-    assert(number_max >= n_figures);
+    assert(figure_number_max >= n_figures);
 
     % open all figures
-    for i = randperm(number_max, n_figures)
+    for i = randperm(figure_number_max, n_figures)
         figure(i);
     end
 

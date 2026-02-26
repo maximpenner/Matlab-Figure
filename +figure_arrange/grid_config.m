@@ -1,4 +1,4 @@
-classdef config
+classdef grid_config
     properties
         monitor
         is_sorted_by_number
@@ -6,10 +6,11 @@ classdef config
         is_toolbar_menubar_classic
         margin_monitor
         margin_figure
+        row_major
     end
 
     methods
-        function obj = config()
+        function obj = grid_config()
             obj.monitor = 0;
             obj.is_sorted_by_number = true;
             obj.n_col = 3;
@@ -25,6 +26,8 @@ classdef config
             obj.margin_figure.bottom = 5;
             obj.margin_figure.left = 5;
             obj.margin_figure.right = 5;
+            
+            obj.row_major = true;
         end
     end
 end
