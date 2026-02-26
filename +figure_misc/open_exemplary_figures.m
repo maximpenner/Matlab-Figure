@@ -8,7 +8,7 @@ function [] = open_exemplary_figures(figure_number_max, n_figures)
     end
 
     % fill all figures
-    callable = @(x) fill_figure(100);
+    callable = @() fill_figure(100);
     figure_misc.apply_to_all_figures(callable);
 end
 
