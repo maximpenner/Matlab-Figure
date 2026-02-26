@@ -24,6 +24,8 @@ function [] = fill_figure(n_points)
     plot(randn(n_points,1), 'DisplayName', "entry B")
     ylabel("Some ylabel right")
     ylim([-4 4])
+
+    figure_misc.annotation(0.3, 0.75, "some annotation");
     
     title("Some Title")
     xlabel("Some xlabel")

@@ -2,6 +2,8 @@ function [] = arrange(config)
 
     if nargin == 0
         config = figure_arrange.config();
+    else
+        assert(isa(config, "figure_arrange.config"));
     end
 
     fig_handles = figure_misc.get_all_fig_handles(config.is_sorted_by_number);
