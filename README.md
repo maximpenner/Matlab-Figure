@@ -14,6 +14,6 @@ figure_arrange.grid();
 ## Testing
 
 ```matlab
-% open some exemplary figures and arrange them in a a grid
+% open some exemplary figures and arrange them in a grid
 figure_arrange.example.grid();
 ```
