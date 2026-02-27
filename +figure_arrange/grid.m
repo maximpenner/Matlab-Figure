@@ -21,8 +21,8 @@ function [] = grid(grid_config)
     x_monitor = dim(3);
     y_monitor = dim(4);
 
-    margin_monitor_px = figure_arrange.convert(grid_config.margin_monitor, x_monitor, y_monitor);
-    margin_figure_px = figure_arrange.convert(grid_config.margin_figure, x_monitor, y_monitor);
+    margin_monitor_px = grid_config.margin_monitor.convert_to(figure_misc.unit.pixels, x_monitor, y_monitor);
+    margin_figure_px = grid_config.margin_figure.convert_to(figure_misc.unit.pixels, x_monitor, y_monitor);
 
     x_monitor_margin = x_monitor - margin_monitor_px.left - margin_monitor_px.right;
     y_monitor_margin = y_monitor - margin_monitor_px.top - margin_monitor_px.bottom;
@@ -36,7 +36,7 @@ function [] = grid(grid_config)
 
     % arrange all figures
     for cnt = 1:n_fig
-        if grid_config.row_major
+        if grid_config.is_row_major
             [col, row] = ind2sub(flip(grid_size), cnt);
         else
             [row, col] = ind2sub(grid_size, cnt);
