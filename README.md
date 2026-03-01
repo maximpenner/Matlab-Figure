@@ -9,6 +9,9 @@ Miscellaneous tools to support graphical visualization in Matlab
 ```matlab
 % arrange all currently existing figures in a grid
 figure_arrange.grid();
+
+% same as above, but figures are cascaded
+figure_arrange.cascade();
 ```
 
 ## Testing
@@ -16,4 +19,7 @@ figure_arrange.grid();
 ```matlab
 % open some exemplary figures and arrange them in a grid
 figure_arrange.example.grid();
+
+% same as above, but figures are cascaded
+figure_arrange.example.cascade();
 ```

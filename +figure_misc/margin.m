@@ -8,31 +8,49 @@ classdef margin
     end
 
     methods
-        function obj = convert_to(obj, unit, x_monitor, y_monitor)
+        function obj = margin(unit, top, bottom, left, right)
+            if nargin == 0
+                obj.unit = figure_misc.unit.percent_of_screen;
+                obj.top = 0;
+                obj.bottom = 0;
+                obj.left = 0;
+                obj.left = 0;
+                return;
+            end
+
+            obj.unit = unit;
+            obj.top = top;
+            obj.bottom = bottom;
+            obj.left = left;
+            obj.right = right;
+        end
+
+        function obj = convert_to(obj, unit, size_monitor)
             arguments
                 obj (1,1) figure_misc.margin
                 unit (1,1) figure_misc.unit
-                x_monitor (1,1) double
-                y_monitor (1,1) double
+                size_monitor (1,1) figure_misc.size
             end
+
+            assert(size_monitor.unit == figure_misc.unit.pixels);
 
             if obj.unit == unit
                 return
             end
 
             switch obj.unit
-                case figure_misc.unit.percent
+                case figure_misc.unit.percent_of_screen
                     % convert to pixels
-                    obj.top    = floor(obj.top    / 100 * y_monitor);
-                    obj.bottom = floor(obj.bottom / 100 * y_monitor);
-                    obj.left   = floor(obj.left   / 100 * x_monitor);
-                    obj.right  = floor(obj.right  / 100 * x_monitor);
+                    obj.top    = floor(obj.top    / 100 * size_monitor.y);
+                    obj.bottom = floor(obj.bottom / 100 * size_monitor.y);
+                    obj.left   = floor(obj.left   / 100 * size_monitor.x);
+                    obj.right  = floor(obj.right  / 100 * size_monitor.x);
                 case figure_misc.unit.pixels
                     % convert to percent
-                    obj.top    = obj.top    * 100 / y_monitor;
-                    obj.bottom = obj.bottom * 100 / y_monitor;
-                    obj.left   = obj.left   * 100 / x_monitor;
-                    obj.right  = obj.right  * 100 / x_monitor;
+                    obj.top    = obj.top    * 100 / size_monitor.y;
+                    obj.bottom = obj.bottom * 100 / size_monitor.y;
+                    obj.left   = obj.left   * 100 / size_monitor.x;
+                    obj.right  = obj.right  * 100 / size_monitor.x;
             end
 
             obj.unit = unit;

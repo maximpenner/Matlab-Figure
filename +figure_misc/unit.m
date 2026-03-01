@@ -1,5 +1,5 @@
 classdef unit
    enumeration
-      percent, pixels
+      percent_of_screen, pixels
    end
 end
