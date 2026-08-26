@@ -16,8 +16,7 @@ function [] = cascade(cascade_config)
     n_fig = numel(fig_handles);
 
     % monitor sizes
-    %dim = get(grid_config.monitor, 'screensize');
-    dim = figure_common.get_screensize();
+    dim = get(cascade_config.monitor, 'screensize');
     size_monitor = figure_common.size(figure_common.unit.pixels, dim(3), dim(4));
 
     % margins
@@ -25,8 +24,8 @@ function [] = cascade(cascade_config)
 
     % total draw area
     size_monitor_margin = figure_common.size(figure_common.unit.pixels, ...
-                                           size_monitor.x - margin_monitor.left - margin_monitor.right, ...
-                                           size_monitor.y - margin_monitor.top - margin_monitor.bottom);
+                                             size_monitor.x - margin_monitor.left - margin_monitor.right, ...
+                                             size_monitor.y - margin_monitor.top - margin_monitor.bottom);
 
     % area per figure
     size_figure = cascade_config.size_figure.convert_to(figure_common.unit.pixels, size_monitor);
@@ -36,8 +35,8 @@ function [] = cascade(cascade_config)
         offset = figure_common.size(figure_mics.unit.pixels, 0, 0);
     else
         offset = figure_common.size(figure_common.unit.pixels, ...
-                                  floor((size_monitor_margin.x - size_figure.x) / (n_fig-1)), ...
-                                  floor((size_monitor_margin.y - size_figure.y) / (n_fig-1)));
+                                    floor((size_monitor_margin.x - size_figure.x) / (n_fig-1)), ...
+                                    floor((size_monitor_margin.y - size_figure.y) / (n_fig-1)));
     end
 
     assert(offset.x >= 0);
@@ -47,8 +46,8 @@ function [] = cascade(cascade_config)
     for cnt = 1:n_fig
         % determine absolute offsets on monitor
         offset_of_this_figure = figure_common.size(figure_common.unit.pixels, ...
-                                                 offset.x * (cnt-1) + margin_monitor.left, ...
-                                                 size_monitor.y - (offset.y * (cnt-1) + size_figure.y + margin_monitor.top));
+                                                   offset.x * (cnt-1) + margin_monitor.left, ...
+                                                   size_monitor.y - (offset.y * (cnt-1) + size_figure.y + margin_monitor.top));
 
         fig_handle = fig_handles(cnt);
 
