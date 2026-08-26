@@ -9,7 +9,7 @@ function [] = open_exemplary_figures(figure_number_max, n_figures)
 
     % fill all figures
     callable = @() fill_figure(100);
-    figure_misc.apply_to_all_figures(callable);
+    figure_common.apply_to_all_figures(callable);
 end
 
 function [] = fill_figure(n_points)
@@ -25,7 +25,7 @@ function [] = fill_figure(n_points)
     ylabel("Some ylabel right")
     ylim([-4 4])
 
-    figure_misc.annotation(0.3, 0.75, "some annotation");
+    figure_common.annotation(0.3, 0.75, "some annotation");
     
     title("Some Title")
     xlabel("Some xlabel")

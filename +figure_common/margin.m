@@ -1,6 +1,6 @@
 classdef margin
     properties
-        unit (1,1) figure_misc.unit
+        unit (1,1) figure_common.unit
         top (1,1) double
         bottom (1,1) double
         left (1,1) double
@@ -10,7 +10,7 @@ classdef margin
     methods
         function obj = margin(unit, top, bottom, left, right)
             if nargin == 0
-                obj.unit = figure_misc.unit.percent_of_screen;
+                obj.unit = figure_common.unit.percent_of_screen;
                 obj.top = 0;
                 obj.bottom = 0;
                 obj.left = 0;
@@ -27,25 +27,25 @@ classdef margin
 
         function obj = convert_to(obj, unit, size_monitor)
             arguments
-                obj (1,1) figure_misc.margin
-                unit (1,1) figure_misc.unit
-                size_monitor (1,1) figure_misc.size
+                obj (1,1) figure_common.margin
+                unit (1,1) figure_common.unit
+                size_monitor (1,1) figure_common.size
             end
 
-            assert(size_monitor.unit == figure_misc.unit.pixels);
+            assert(size_monitor.unit == figure_common.unit.pixels);
 
             if obj.unit == unit
                 return
             end
 
             switch obj.unit
-                case figure_misc.unit.percent_of_screen
+                case figure_common.unit.percent_of_screen
                     % convert to pixels
                     obj.top    = floor(obj.top    / 100 * size_monitor.y);
                     obj.bottom = floor(obj.bottom / 100 * size_monitor.y);
                     obj.left   = floor(obj.left   / 100 * size_monitor.x);
                     obj.right  = floor(obj.right  / 100 * size_monitor.x);
-                case figure_misc.unit.pixels
+                case figure_common.unit.pixels
                     % convert to percent
                     obj.top    = obj.top    * 100 / size_monitor.y;
                     obj.bottom = obj.bottom * 100 / size_monitor.y;
